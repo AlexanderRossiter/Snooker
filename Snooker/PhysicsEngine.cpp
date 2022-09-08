@@ -28,8 +28,8 @@ void PhysicsEngine::set_extents(float _xmin, float _xmax, float _ymin, float _ym
 void PhysicsEngine::integrate_accelerations() {
 	for (Ball& b : balls) {
 		// Friction
-		b.ax += -0.1f * b.vx;
-		b.ay += -0.1f * b.vy;
+		b.ax += -0.35f * b.vx;
+		b.ay += -0.35f * b.vy;
 
 		b.vx = b.vx + b.ax * delta_t;
 		b.vy = b.vy + b.ay * delta_t;

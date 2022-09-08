@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "EventHandler.h"
 #include "Ball.h"
+#include "setup.h"
 
 
 const unsigned int SCR_WIDTH = 400;
@@ -16,11 +17,9 @@ int main()
 
     PhysicsEngine pe;
 
-    for (int i = 0; i < 10; i++) {
-        pe.add_ball(std::rand() % SCR_WIDTH, std::rand() % SCR_HEIGHT, 5.0f);
-    }
+    rack_balls(pe);
 
-    pe.set_extents(0, SCR_WIDTH, 0, SCR_HEIGHT);
+    pe.set_extents(10, SCR_WIDTH-10, 10, SCR_HEIGHT-10);
 
     sf::Texture texture;
     if (!texture.loadFromFile("./Resources/snooker_table.png"))
@@ -30,7 +29,6 @@ int main()
     }
     sf::Sprite background;
     background.setTexture(texture);
-    background.setScale(0.5f, 0.5f);
     // Main loop.
     while (app.isOpen())
     {
@@ -48,18 +46,14 @@ int main()
         float fps = 1.0f / elapsed_time_sec;
 
         
-        //std::cout << n << std::endl;
-
         app.clear();
-        // The Physics steps
         app.draw(background);
+
+        // The Physics steps
         for (int nstep = 0; nstep < n; nstep++) {
             pe.update();
         }
         pe.display(app);
-        if (pe.ball_selected()) {
-            app.draw(eventHandler.line_to_mouse, 2, sf::Lines);
-        }
         app.display();
     }
 

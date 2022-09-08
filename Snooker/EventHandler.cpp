@@ -34,8 +34,8 @@ void EventHandler::check_events(sf::RenderWindow& app, PhysicsEngine &pe) {
             if (event.mouseButton.button == sf::Mouse::Left) {
                 sf::Vector2i relative_position = sf::Mouse::getPosition(app);
                 if (pe.ball_selected()) {
-                    float fx = (pe.selected_ball->x - relative_position.x) * 5000000.f;
-                    float fy = (pe.selected_ball->y - relative_position.y) * 5000000.f;
+                    float fx = (pe.selected_ball->x - relative_position.x) * 2000000.f;
+                    float fy = (pe.selected_ball->y - relative_position.y) * 2000000.f;
                     pe.apply_force_to_ball(*pe.selected_ball, fx, fy);
                     pe.deselect_ball();
                 }
