@@ -53,6 +53,7 @@ int main()
         for (int nstep = 0; nstep < n; nstep++) {
             pe.update();
         }
+
         pe.display(app);
         app.display();
     }

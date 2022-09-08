@@ -47,9 +47,20 @@ void EventHandler::check_events(sf::RenderWindow& app, PhysicsEngine &pe) {
                 sf::Vector2i relative_position = sf::Mouse::getPosition(app);
                 //pe.selected_ball->x = relative_position.x;
                 //pe.selected_ball->y = relative_position.y;
+                /*float dx = pe.selected_ball->x - relative_position.x;
+                float dy = pe.selected_ball->y - relative_position.y;
+                float length = std::sqrt(dx * dx + dy * dy);
 
-                line_to_mouse[0] = sf::Vertex(sf::Vector2f(pe.selected_ball->x, pe.selected_ball->y));
-                line_to_mouse[1] = sf::Vertex(sf::Vector2f(relative_position.x, relative_position.y));
+                float theta = std::atan2(dy, dx);
+
+                line.setSize(sf::Vector2f(length, 5.0f));
+                line.setPosition(relative_position.x, relative_position.y);
+                line.setRotation(theta);
+                line.setFillColor(sf::Color::White);
+
+                app.draw(line);*/
+                //line_to_mouse[0] = sf::Vertex(sf::Vector2f(pe.selected_ball->x, pe.selected_ball->y));
+                //line_to_mouse[1] = sf::Vertex(sf::Vector2f(relative_position.x, relative_position.y));
     
             }
         }

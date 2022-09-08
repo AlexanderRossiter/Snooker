@@ -6,7 +6,7 @@
 class EventHandler
 {
 public:
-	sf::Vertex line_to_mouse[2];
+	sf::RectangleShape line;
 	void check_events(sf::RenderWindow& app, PhysicsEngine& pe);
 
 
