@@ -93,21 +93,17 @@ void PhysicsEngine::calculate_dynamic_collisions() {
 		Ball* b1 = pair[0];
 		Ball* b2 = pair[1];
 
-		float mag;
-
 		// Normal vector
 		float nx = b1->x - b2->x;
 		float ny = b1->y - b2->y;
-		mag = std::sqrt(nx * nx + ny * ny);
+		float mag = std::sqrt(nx * nx + ny * ny);
 		nx = nx / mag;
 		ny = ny / mag;
 
 		// Tangent vector
 		float tx = -ny;
 		float ty = nx;
-		mag = std::sqrt(tx * tx + ty * ty);
-		tx = tx / mag;
-		ty = ty / mag;
+
 
 		// Velocity doesn't change in the tangential direction.
 		float v_tang_1 = b1->vx * tx + b1->vy * ty;
@@ -135,6 +131,7 @@ void PhysicsEngine::apply_force_to_ball(Ball& b, float fx, float fy) {
 }
 
 void PhysicsEngine::calculate_wall_collisions() {
+	// Basic wall collisions since they're always vertical or horizontal.
 	for (Ball& b : balls) {
 		if (x_value_in_ball(b, xmin)) { b.vx = -b.vx; }
 		if (x_value_in_ball(b, xmax)) { b.vx = -b.vx; }
